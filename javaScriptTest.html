@@ -22,7 +22,7 @@
     var yv = 1;
     var r = 12;
     function renderBall(var myX, var myY, var rad) {
-       ctx.beginPath();
+      ctx.beginPath();
       ctx.arc(myX, myY, rad, 0, Math.PI*2);
       ctx.fillStyle = "#CC6644";
       ctx.fill();
@@ -35,11 +35,11 @@
       y += yv;
       if (x < r || x > canvas.width - r) {
         x -= xv
-        xv *= -1
+        xv = -xv
       }
       if (y < r || y > canvas.height - r) {
         y -= yv
-        yv *= -1
+        yv = -yv
       }
     }
     setInterval(mainLoop, 10);
