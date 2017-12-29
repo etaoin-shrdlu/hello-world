@@ -18,19 +18,31 @@
     var ctx = canvas.getContext("2d");
     var x = canvas.width/2;
     var y = canvas.height-30;
-    var dx = 1;
-    var dy = 0;
-    function render() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-      ctx.arc(x, y, 10, 0, Math.PI*2);
+    var xv = 1;
+    var yv = 1;
+    var r = 12;
+    function renderBall(var myX, var myY, var rad) {
+       ctx.beginPath();
+      ctx.arc(myX, myY, rad, 0, Math.PI*2);
       ctx.fillStyle = "#CC6644";
       ctx.fill();
       ctx.closePath();
-      x += dx;
-      y += dy;
     }
-    setInterval(render, 10);
+    function mainLoop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      renderBall(x, y, r);
+      x += xv;
+      y += yv;
+      if (x < r || x > canvas.width - r) {
+        x -= xv
+        xv *= -1
+      }
+      if (y < r || y > canvas.height - r) {
+        y -= yv
+        yv *= -1
+      }
+    }
+    setInterval(mainLoop, 10);
     
     
     
