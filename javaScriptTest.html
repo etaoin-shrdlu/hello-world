@@ -57,7 +57,7 @@
       } else if (y > canvas.height + r) {
         //alert("GAME OVER");
         //document.location.reload();
-        y = 10;
+        y = 25;
       }
       if (Math.abs(paddleX-x) < r + paddleWidth && Math.abs(paddleY-y) < r + paddleHeight) {
         y -= yv;
@@ -81,6 +81,7 @@
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     function keyDownHandler(e) {
+      
       if(e.keyCode == 39) {
         rightPressed = true;
       }
