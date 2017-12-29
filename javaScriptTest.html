@@ -6,7 +6,7 @@
     <title>JavaScript Test</title>
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { background: #ddd; display: block; margin: 0 auto; }
+    	canvas { background: #fdd; display: block; margin: 0 auto; }
     </style>
   </head>
   <body>
@@ -22,10 +22,10 @@
     ctx.fill();
     ctx.closePath();
     var img = new Image();
-    //img.onload = function () {
-    //   ctx.drawImage(img, 0, 0, 50, 50);
-    //}
-    //img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/35px-Wikimedia_Community_Logo.svg.png";
+    img.onload = function () {
+       ctx.drawImage(img, 0, 0, 50, 50);
+    }
+    img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/35px-Wikimedia_Community_Logo.svg.png";
 
     
     
