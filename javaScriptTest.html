@@ -21,10 +21,23 @@
     var xv = 1;
     var yv = 1;
     var r = 12;
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width-paddleWidth)/2;
+    var paddleXv = 0;
+    var rightPressed = false;
+    var leftPressed = false;
+    function renderPaddle() {
+      ctx.beginPath();
+      ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
     function renderBall(myX, myY, rad) {
       ctx.beginPath();
       ctx.arc(myX, myY, rad, 0, Math.PI*2);
-      ctx.fillStyle = "#CC6644";
+      ctx.fillStyle = "#449CCC";
       ctx.fill();
       ctx.closePath();
     }
@@ -40,6 +53,40 @@
       if (y < r || y > canvas.height - r) {
         y -= yv
         yv = -yv
+      }
+      renderPaddle();
+      paddleX += paddleXv;
+      if(rightPressed) {
+        paddleXv += 4;
+      }
+      else if(leftPressed) {
+        paddleXv -= 4;
+      }
+      if (paddleX > canvas.width - paddleWidth || paddleX < 0) {
+        paddleX -= paddleXv;
+        paddleXv = paddleXv * -0.9;
+      }
+      else {
+        paddleXv = paddleXv * 0.9;
+      }
+    }
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+    function keyDownHandler(e) {
+      if(e.keyCode == 39) {
+        rightPressed = true;
+      }
+      else if(e.keyCode == 37) {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(e) {
+      if(e.keyCode == 39) {
+        rightPressed = false;
+      }
+      else if(e.keyCode == 37) {
+        leftPressed = false;
       }
     }
     setInterval(mainLoop, 10);
