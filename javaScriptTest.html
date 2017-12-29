@@ -16,17 +16,31 @@
   <script>
     var canvas = document.getElementById("mainCanvas");
     var ctx = canvas.getContext("2d");
-    ctx.beginPath();
-    ctx.rect(20, 40, 50, 50);
-    ctx.fillStyle = "#00FF99";
-    ctx.fill();
-    ctx.closePath();
-    var img = new Image();
-    img.onload = function () {
-       ctx.drawImage(img, 20, 40, 50, 50);
+    var x = canvas.width/2;
+    var y = canvas.height-30;
+    var dx = 1;
+    var dy = 0;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.arc(x, y, 10, 0, Math.PI*2);
+      ctx.fillStyle = "#CC6644";
+      ctx.fill();
+      ctx.closePath();
+      x += dx;
+      y += dy;
     }
-    img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/35px-Wikimedia_Community_Logo.svg.png";
-
+    setInterval(render, 10);
+    
+    
+    
+    
+   /*var img = new Image();
+    *img.onload = function () {
+    *   ctx.drawImage(img, 20, 40, 50, 50);
+    *}
+    *img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/35px-Wikimedia_Community_Logo.svg.png";
+    */
     
     
     
