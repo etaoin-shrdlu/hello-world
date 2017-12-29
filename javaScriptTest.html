@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="utf-8" />
+    <title>JavaScript Test</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #ddd; display: block; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <canvas id="mainCanvas" width="720" height="480"></canvas>
+    
+  </body>
+  <script>
+    var canvas = document.getElementById("mainCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.rect(20, 40, 50, 50);
+    ctx.fillStyle = "#00FF99";
+    ctx.fill();
+    ctx.closePath();
+    var img = new Image();
+    //img.onload = function () {
+    //   ctx.drawImage(img, 0, 0, 50, 50);
+    //}
+    //img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/35px-Wikimedia_Community_Logo.svg.png";
+
+    
+    
+    
+  </script>
+</html>
+
+
