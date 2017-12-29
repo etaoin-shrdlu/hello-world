@@ -25,11 +25,12 @@
     var paddleWidth = 75;
     var paddleX = (canvas.width-paddleWidth)/2;
     var paddleXv = 0;
+    var paddleY = canvas.height-paddleHeight-20;
     var rightPressed = false;
     var leftPressed = false;
     function renderPaddle() {
       ctx.beginPath();
-      ctx.rect(paddleX, canvas.height-paddleHeight-20, paddleWidth, paddleHeight);
+      ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
       ctx.fillStyle = "#CC6844";
       ctx.fill();
       ctx.closePath();
@@ -56,9 +57,9 @@
       } else if (y > canvas.height + r) {
         //alert("GAME OVER");
         //document.location.reload();
-        y = r;
+        y = 10;
       }
-      if (Math.abs(paddleX-x) < r + paddleWidth && Math.abs(20-y) < r + paddleHeight) {
+      if (Math.abs(paddleX-x) < r + paddleWidth && Math.abs(paddleY-y) < r + paddleHeight) {
         y -= yv;
         yv = yv * -1;
         xv += (paddleXv/20);
