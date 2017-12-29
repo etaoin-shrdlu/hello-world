@@ -29,7 +29,7 @@
     var leftPressed = false;
     function renderPaddle() {
       ctx.beginPath();
-      ctx.rect(paddleX, canvas.height-paddleHeight+20, paddleWidth, paddleHeight);
+      ctx.rect(paddleX, canvas.height-paddleHeight-20, paddleWidth, paddleHeight);
       ctx.fillStyle = "#CC6844";
       ctx.fill();
       ctx.closePath();
@@ -47,16 +47,20 @@
       x += xv;
       y += yv;
       if (x < r || x > canvas.width - r) {
-        x -= xv
-        xv = xv * -1.01
+        x -= xv;
+        xv = xv * -1.01;
       }
       if (y < r) {
-        y -= yv
-        yv = yv * -1.01
-      } else if (y > canvas.height - r) {
+        y -= yv;
+        yv = yv * -1.01;
+      } else if (y > canvas.height + r) {
         //alert("GAME OVER");
         //document.location.reload();
-        y = 0
+        y = -r;
+      }
+      if (paddleX-x < r + paddleWidth && 20-y < r + paddleHeight) {
+        yv = yv * -1;
+        xv += (paddleXv/2);
       }
       renderPaddle();
       paddleX += paddleXv;
