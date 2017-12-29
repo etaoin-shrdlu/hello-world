@@ -57,14 +57,14 @@
       renderPaddle();
       paddleX += paddleXv;
       if(rightPressed) {
-        paddleXv += 4;
+        paddleXv += 3;
       }
       else if(leftPressed) {
-        paddleXv -= 4;
+        paddleXv -= 3;
       }
       if (paddleX > canvas.width - paddleWidth || paddleX < 0) {
         paddleX -= paddleXv;
-        paddleXv = paddleXv * -0.9;
+        paddleXv = paddleXv * -0.5;
       }
       else {
         paddleXv = paddleXv * 0.9;
