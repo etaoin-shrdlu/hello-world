@@ -54,8 +54,9 @@
         y -= yv
         yv = yv * -1.01
       } else if (y > canvas.height - r) {
-        alert("GAME OVER");
-        document.location.reload();
+        //alert("GAME OVER");
+        //document.location.reload();
+        y = 0
       }
       renderPaddle();
       paddleX += paddleXv;
