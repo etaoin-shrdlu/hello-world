@@ -58,22 +58,29 @@
         //document.location.reload();
         y = -r;
       }
-      if (paddleX-x < r + paddleWidth && 20-y < r + paddleHeight) {
-        yv = yv * -1;
-        xv += (paddleXv/2);
+      if (paddleX-x < r + paddleWidth && 20-y > r + paddleHeight) {
+        if (20-y-yv > r + paddleHeight) {
+          x -= xv;
+          xv = xv * -1;
+          yv += 0.1;
+        } else {
+          y -= yv;
+          yv = yv * -1;
+          xv += (paddleXv/20);
+        }
       }
       renderPaddle();
       paddleX += paddleXv;
       if (rightPressed) {
-        paddleXv += 2;
+        paddleXv += 1;
       } else if (leftPressed) {
-        paddleXv -= 2;
+        paddleXv -= 1;
       }
       if (paddleX > canvas.width - paddleWidth || paddleX < 0) {
         paddleX -= paddleXv;
-        paddleXv = paddleXv * -0.5;
+        paddleXv = paddleXv * -0.3;
       } else {
-        paddleXv = paddleXv * 0.9;
+        paddleXv = paddleXv * 0.7;
       }
     }
     document.addEventListener("keydown", keyDownHandler, false);
